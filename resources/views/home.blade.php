@@ -19,10 +19,12 @@
                             </radialGradient>
                         </defs>
                     </svg>
-                    <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-                        <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-2xl">Selamat
+                    <div
+                        class=" mx-auto max-w-md text-center sm:mt-10 md:my-20 lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+                        <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-l ">Selamat
                             datang di Article Web.</h2>
-                        <p class="mt-6 text-lg/8 text-pretty text-gray-300">Temukan perspektif yang berarti. Sumber
+                        <p class="mt-6 text-lg/8 text-pretty text-gray-300 sm: text-">Temukan perspektif yang berarti.
+                            Sumber
                             harianmu untuk inspirasi, analisis mendalam, dan cerita yang memicu rasa ingin tahu.</p>
 
                         <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
@@ -35,8 +37,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="relative flex items-center justify-center mx-auto sm:px-6 sm:py-32 lg:px-8">
-                        <img src="{{ asset('logo.jpg') }}" alt="Logo" class="w-75 rounded-4xl" />
+                    <div class="relative flex items-center justify-center mx-auto sm:px-5 lg:px-8">
+                        <img src="{{ asset('logo.jpg') }}" alt="Logo" class="rounded-4xl md:w-80 my-20 sm:w-30" />
                     </div>
                 </div>
             </div>
@@ -54,13 +56,17 @@
             </div>
             <div class="mx-auto max-w-2xl lg:max-w-4xl">
                 <figure class="mt-10">
-                    <blockquote class="text-center text-xl/8 font-semibold text-white sm:text-2xl/9">
+                    <blockquote class="text-center text-xl/8 font-semibold text-white sm:text-xl">
                         <p>“The only impossible journey is the one you never begin.”</p>
                     </blockquote>
 
                 </figure>
             </div>
         </section>
+
+        <div class="my-25">
+            <x-feature></x-feature>
+        </div>
 
     </div>
 </x-layout>

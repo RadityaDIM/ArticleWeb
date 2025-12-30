@@ -19,8 +19,12 @@ Route::get('/about', function () {
 
 Route::get('/posts', function (Request $request) {
 
-    return view('posts', ['title' => "Posts Page", 'posts' =>
-    Post::search(request(['search', 'category', 'author']))->latest()->paginate(10)->withQueryString(), 'categories' => Category::all()]);
+    return view('posts', [
+        'title' => "Posts Page",
+        'posts' =>
+        Post::search(request(['search', 'category', 'author']))->latest()->paginate(10)->withQueryString(),
+        'categories' => Category::all()
+    ]);
 });
 
 // Route::get('/posts', function () {

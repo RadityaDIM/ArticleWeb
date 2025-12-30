@@ -1,11 +1,11 @@
-<section class="bg-white dark:bg-gray-900">
-    <div class="py-8 px- sm:py-16 lg:px-6">
-        <div class="max-w-3xl mb-8 lg:mb-16">
-            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Designed for business
-                teams like yours</h2>
-            <p class="text-gray-500 sm:text-xl dark:text-gray-400">Here at Flowbite we focus on markets where technology,
-                innovation, and capital can unlock long-term value and drive economic growth.</p>
-        </div>
+<div class="col-span-full flex flex-col items-center justify-center max-w-7xl my-10 mb-8 ">
+    <h2 class="mb-4 text-4xl tracking-tight font-extrabold  text-gray-900">Empowering Your
+        Reading Experience</h2>
+    <p class="text-gray-700 sm:text-xl">We provide a seamless platform for readers and writers
+        to explore, share, and grow through high-quality written content.</p>
+</div>
+<section class="bg-white dark:bg-gray-900 rounded-2xl">
+    <div class="py-8 sm:py-16 lg:px-20 md: px-6">
         <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
             <div>
                 <div
@@ -17,9 +17,9 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Marketing</h3>
-                <p class="text-gray-500 dark:text-gray-400">Plan it, create it, launch it. Collaborate seamlessly with
-                    all the organization and hit your marketing goals every month with our marketing plan.</p>
+                <h3 class="mb-2 text-xl font-bold dark:text-white">Expert Perspectives</h3>
+                <p class="text-gray-500 dark:text-gray-400">Access deep-dive analyses and thought-provoking articles
+                    curated from industry leaders and passionate writers across various niches.</p>
             </div>
             <div>
                 <div
@@ -31,9 +31,9 @@
                         </path>
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Legal</h3>
-                <p class="text-gray-500 dark:text-gray-400">Protect your organization, devices and stay compliant with
-                    our structured workflows and custom permissions made for you.</p>
+                <h3 class="mb-2 text-xl font-bold dark:text-white">Engaging Discussions</h3>
+                <p class="text-gray-500 dark:text-gray-400">Join a vibrant community of readers. Share your thoughts in
+                    the comment section and exchange ideas to broaden your horizons.</p>
             </div>
             <div>
                 <div
@@ -48,9 +48,9 @@
                         </path>
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Business Automation</h3>
-                <p class="text-gray-500 dark:text-gray-400">Auto-assign tasks, send Slack messages, and much more. Now
-                    power up with hundreds of new templates to help you get started.</p>
+                <h3 class="mb-2 text-xl font-bold dark:text-white">Personal Library</h3>
+                <p class="text-gray-500 dark:text-gray-400">Save your favorite articles to your personal collection so
+                    you can revisit important insights whenever you need them.</p>
             </div>
             <div>
                 <div
@@ -65,9 +65,9 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Finance</h3>
-                <p class="text-gray-500 dark:text-gray-400">Audit-proof software built for critical financial operations
-                    like month-end close and quarterly budgeting.</p>
+                <h3 class="mb-2 text-xl font-bold dark:text-white">Curated Newsletter</h3>
+                <p class="text-gray-500 dark:text-gray-400">Stay ahead of the trends with a weekly digest of
+                    top-performing stories delivered straight to your inbox.</p>
             </div>
             <div>
                 <div
@@ -79,9 +79,9 @@
                         </path>
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Enterprise Design</h3>
-                <p class="text-gray-500 dark:text-gray-400">Craft beautiful, delightful experiences for both marketing
-                    and product with real cross-company collaboration.</p>
+                <h3 class="mb-2 text-xl font-bold dark:text-white">Smart Recommendations</h3>
+                <p class="text-gray-500 dark:text-gray-400">Our system learns your preferences to suggest articles that
+                    align perfectly with your reading habits and interests.</p>
             </div>
             <div>
                 <div
@@ -93,9 +93,9 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </div>
-                <h3 class="mb-2 text-xl font-bold dark:text-white">Operations</h3>
-                <p class="text-gray-500 dark:text-gray-400">Keep your company’s lights on with customizable, iterative,
-                    and structured workflows built for all efficient teams and individual.</p>
+                <h3 class="mb-2 text-xl font-bold dark:text-white">Seamless Accessibility</h3>
+                <p class="text-gray-500 dark:text-gray-400">Optimized for readability with a clean interface and a
+                    built-in Dark Mode to reduce eye strain during long reading sessions.</p>
             </div>
         </div>
     </div>

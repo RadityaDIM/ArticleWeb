@@ -58,17 +58,14 @@
 
     <div class=" mx-auto max-w-7xl ">
         <div class="grid gap-5 lg:grid-cols-2">
-            @foreach ($posts as $post)
-                {{-- @foreach ($posts as $post)
-                    @php dd($post->category->color); @endphp
-                @endforeach --}}
+            @forelse ($posts as $post)
                 <div class="my-1">
                     <article
                         class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex justify-between items-center mb-5 text-gray-500">
                             <a href="/posts?category={{ $post->category->slug }}">
                                 <span style="background-color: {{ $post->category->color }}"
-                                    class="bg-primary-200 text-white text-xs border-2 border-gray-200 font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-white">
+                                    class="bg-primary-200 text-white text-xs border-0 font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-white">
                                     {{ $post->category->name }}
                                 </span>
                             </a>
@@ -106,7 +103,21 @@
                         </div>
                     </article>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-span-full flex flex-col items-center justify-center py-20">
+                    <svg class="w-20 h-20 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="none"
+                        viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v5a1 1 0 1 0 2 0V8Zm-1 7a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H12Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <h2 class="text-xl font-bold text-primary-500 my-5">Pencarian kosong</h2>
+
+
+
+                </div>
+            @endforelse
         </div>
     </div>
     <div class="my-20 mx-auto max-w-3xl">
