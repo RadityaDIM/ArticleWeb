@@ -18,17 +18,22 @@
              <div class="hidden md:block">
                  <div class="ml-4 flex items-center md:ml-6">
 
+                     {{-- <div class="text-white font-medium">
+                         @auth
+                             <h3>Welcome, {{ auth::user()->name }}!</h3>
+                         @endauth
+                     </div> --}}
                      <!-- Profile dropdown -->
                      <div class="relative ml-3">
+
+
                          <div>
                              <button type="button" @click="isOpen = !isOpen"
                                  class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800"
                                  id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                  <span class="absolute -inset-1.5"></span>
                                  <span class="sr-only">Open user menu</span>
-                                 <img class="size-8 rounded-full"
-                                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                     alt="" />
+                                 <img class="size-8 rounded-full" src="{{ asset('icon.jpg') }}" alt="" />
                              </button>
                          </div>
 
@@ -47,8 +52,14 @@
                                  tabindex="-1" id="user-menu-item-0">Your Profile</a>
                              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                  tabindex="-1" id="user-menu-item-1">Settings</a>
-                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                 tabindex="-1" id="user-menu-item-2">Sign out</a>
+                             <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700"
+                                 role="menuitem" tabindex="-1" id="user-menu-item-2"
+                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign
+                                 out</a>
+                             <form action="{{ route('logout') }}" method=POST id="logout-form">
+                                 @csrf
+                             </form>
+
                          </div>
                      </div>
                  </div>
@@ -93,13 +104,11 @@
          <div class="border-t border-gray-700 pt-4 pb-3">
              <div class="flex items-center px-5">
                  <div class="shrink-0">
-                     <img class="size-10 rounded-full"
-                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                         alt="" />
+                     <img class="size-10 rounded-full" src="{{ asset('icon.jpg') }}" alt="" />
                  </div>
                  <div class="ml-3">
-                     <div class="text-base/5 font-medium text-white">Tom Cook</div>
-                     <div class="text-sm font-medium text-gray-400">tom@example.com</div>
+                     <div class="text-base/5 font-medium text-white">{{ Auth::user()->name }}</div>
+                     <div class="text-sm font-medium text-gray-400">{{ Auth::user()->email }}</div>
                  </div>
                  <button type="button"
                      class="relative ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">

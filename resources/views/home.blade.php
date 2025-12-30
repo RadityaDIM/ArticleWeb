@@ -2,7 +2,6 @@
     <x-slot:title>
         {{ $title }}
     </x-slot:title>
-
     <div class="">
         <div class="">
             <div class="mx-auto max-w-7xl  sm:px-6 sm:py-10 lg:px-8">

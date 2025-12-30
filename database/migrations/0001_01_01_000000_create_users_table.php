@@ -21,7 +21,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreignId('role_id')->constrained(
+            $table->foreignId('role_id')->nullable()->constrained(
                 table: 'roles',
                 indexName: 'user_role_id'
             );
