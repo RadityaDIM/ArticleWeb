@@ -1,5 +1,5 @@
 <div>
-    <div class="px-4 mx-auto max-w-7xl lg:py-5 lg:px-6">
+    <div class="px-4 mx-auto max-w-7xl lg:px-6">
         <div class="mx-auto max-w-3xl sm:text-center">
             <form action="/posts" method="GET">
                 {{-- Logika Kategori tetap ada di sini agar filter tidak hilang --}}

@@ -1,9 +1,9 @@
 <x-layout>
     <x-slot:title>
         {{ $title }}</x-slot:title>
-    <div class="flex justify-between">
+    <div class="flex justify-between my-5 mx-auto max-w-5xl">
         {{-- div filter --}}
-        <div class=" my-auto">
+        <div class="">
             @isset($categories)
                 <div>
                     <form action="/posts" method="GET" id="filterForm">
@@ -48,8 +48,17 @@
                 </div>
             @endisset
         </div>
-        <div class="w-2xl mx-0">
+        <div class="w-2xl my-0">
             <x-search></x-search>
+        </div>
+        <div class="">
+            <button id="defaultModalButton" data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+                class="text-white bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 "
+                type="button"> Add post
+            </button>
+        </div>
+        <div>
+            <x-modal :categories="$categories" />
         </div>
     </div>
     {{-- </x-slot:title> --}}
@@ -104,15 +113,26 @@
                     </article>
                 </div>
             @empty
-                <div class="col-span-full flex flex-col items-center justify-center py-20">
-                    <svg class="w-20 h-20 text-gray-800 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="none"
-                        viewBox="0 0 24 24">
-                        <path fill-rule="evenodd"
-                            d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v5a1 1 0 1 0 2 0V8Zm-1 7a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H12Z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <h2 class="text-xl font-bold text-primary-500 my-5">Pencarian kosong</h2>
+                <div class="col-span-full flex flex-col items-center justify-center py-20 ">
+                    <div class="grid min-h-full place-items-center ">
+                        <div class="text-center">
+                            <svg class="w-20 h-20 block mx-auto text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.529 9.988a2.502 2.502 0 1 1 5 .191A2.441 2.441 0 0 1 12 12.582V14m-.01 3.008H12M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+
+                            <p
+                                class="mt-4 text-2xl font-semibold tracking-tight text-balance text-black md:text-2xl sm:text-base">
+                                Post not found</p>
+                            <p class="mt-2 text-lg font-medium text-pretty text-gray-400 sm:text-base md:text-lg">
+                                Sorry,
+                                we couldn’t find the post with '{{ request('search') }}''s keyword you’re looking for.
+                            </p>
+                        </div>
+                    </div>
+
 
 
 

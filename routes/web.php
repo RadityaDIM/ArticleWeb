@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Role;
@@ -53,3 +54,6 @@ Route::get('/authors/{user:username}', function (User $user) {
 Route::get('/category/{category:slug}', function (Category $category, Request $request) {
     return view('posts', ['title' => count($category->posts) . ' Articles on Category ' . $category->name, 'posts' => $category->posts]);
 })->middleware('auth');
+
+
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');

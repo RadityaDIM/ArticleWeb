@@ -46,14 +46,15 @@
     </div>
 
     <div>
-        <section class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 sm:py-32 lg:px-8 rounded-2xl my-10">
+        <section
+            class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 sm:py-32 lg:px-8 rounded-2xl my-10 mx-auto max-w-5xl">
             <div
                 class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-indigo-500),transparent)] opacity-10">
             </div>
             <div
                 class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-gray-900 shadow-xl ring-1 shadow-indigo-500/5 ring-white/5 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center">
             </div>
-            <div class="mx-auto max-w-2xl lg:max-w-4xl">
+            <div class="">
                 <figure class="mt-10">
                     <blockquote class="text-center text-xl/8 font-semibold text-white sm:text-xl">
                         <p>“The only impossible journey is the one you never begin.”</p>
