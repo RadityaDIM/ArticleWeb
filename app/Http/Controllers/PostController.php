@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use id;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class PostController extends Controller
 {
@@ -38,5 +39,15 @@ class PostController extends Controller
             // Jika gagal, tampilkan pesan error aslinya
             return dd($e->getMessage());
         }
+    }
+
+    public function destroy(Post $post)
+    {
+        if (Auth::id() !== $post->author_id) {
+            abort(403, 'Authentication error, please retry log in');
+        }
+
+        $post->delete();
+        return redirect('/posts')->with('success', 'Post has been deleted!');
     }
 }

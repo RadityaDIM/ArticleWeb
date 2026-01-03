@@ -57,3 +57,6 @@ Route::get('/category/{category:slug}', function (Category $category, Request $r
 
 
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+
+Route::delete('/post/{post:slug}', [PostController::class, 'destroy'])->name('posts.destroy');
