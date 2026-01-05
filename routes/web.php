@@ -40,7 +40,7 @@ Route::get('/posts/{post:slug}', function (Post $post) {
     // $post = Post::find($post);
     $post->load('author', 'category');
 
-    return view('post', ['title' => 'Single Post', 'post' => $post]);
+    return view('post', ['title' => 'Single Post', 'post' => $post, 'categories' => Category::all()]);
 })->middleware('auth');
 
 Route::get('/contact', function () {
@@ -58,5 +58,6 @@ Route::get('/category/{category:slug}', function (Category $category, Request $r
 
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
-
 Route::delete('/post/{post:slug}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+Route::put('/post/{post:slug}', [PostController::class, 'update'])->name('posts.update');

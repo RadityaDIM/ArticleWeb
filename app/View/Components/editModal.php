@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class create-modal extends Component
+class editModal extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class create-modal extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.create-modal');
+        return view('components.editModal');
     }
 }
