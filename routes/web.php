@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
@@ -61,3 +62,5 @@ Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::delete('/post/{post:slug}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 Route::put('/post/{post:slug}', [PostController::class, 'update'])->name('posts.update');
+
+Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.sendEmail');
