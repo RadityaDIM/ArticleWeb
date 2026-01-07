@@ -22,14 +22,29 @@ class PostController extends Controller
             'body' => 'required'
         ]);
 
+        if ($request->hasFile('image')) {
+            $validate['image'] = $request->file('image')->store('post-images', 'public');
+        }
+
         $validate['author_id'] = Auth::id();
-        $validate['slug'] = Str::slug($request->title);
+
+        $slug = Str::slug($request->title);
+        $duplicatedSlug = $slug;
+
+        $count = 1;
+        while (Post::where('slug', $slug)->exists()) {
+            $slug = $duplicatedSlug . '-' . $count;
+            $count++;
+        }
+
+        $validate['slug'] = $slug;
 
         try {
 
             Post::create([
                 'title' => $validate['title'],
                 'category_id' => $validate['category_id'],
+                'image' => $validate['image'] ?? null,
                 'body' => $validate['body'],
                 'author_id' => $validate['author_id'],
                 'slug' => $validate['slug'],
@@ -58,6 +73,7 @@ class PostController extends Controller
             abort(403, 'Authentication error, please retry log in');
         }
 
+
         // dd($request->all());
         $validate = $request->validate([
             'title' => 'required|max:255',
@@ -65,9 +81,23 @@ class PostController extends Controller
             'body' => 'required'
         ]);
 
-        $validate['author_id'] = Auth::id();
-        $validate['slug'] = Str::slug($request->title);
+        if ($request->hasFile('image')) {
+            $validate['image'] = $request->file('image')->store('post-images', 'public');
+        }
 
+        $validate['author_id'] = Auth::id();
+
+
+        $slug = Str::slug($request->title);
+        $duplicatedSlug = $slug;
+
+        $count = 1;
+        while (Post::where('slug', $slug)->where('id', '!=', $post->id)->exists()) {
+            $slug = $duplicatedSlug . '-' . $count;
+            $count++;
+        }
+
+        $validate['slug'] = $slug;
 
         $post->update([
             'title' => $validate['title'],
@@ -75,6 +105,7 @@ class PostController extends Controller
             'body' => $validate['body'],
             'author_id' => $validate['author_id'],
             'slug' => $validate['slug'],
+            'image' => $validate['image'] ?? null
         ]);
 
         return redirect('/posts/' . $post->slug)->with('success', 'Post has been updated!');

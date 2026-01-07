@@ -64,7 +64,7 @@
             </div>
         </section>
 
-        <div class="my-25">
+        <div class="mt-25 mb-20 mx-auto max-w-7xl">
             <x-feature></x-feature>
         </div>
 

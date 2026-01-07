@@ -1,3 +1,4 @@
+@props(['fullWidth' => false])
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-gray-100">
 
@@ -15,14 +16,24 @@
 
 <body class="h-full">
 
-    <div class="min-h-full">
+    <div class="min-h-full flex flex-col">
         <x-navbar></x-navbar>
         <x-header>{{ $title }}</x-header>
 
-        <main>
-            <div class="mx-auto max-w-8xl px-4 py-6 sm:px-6 lg:px-8">
+        <main class="flex-1">
+
+            @if ($fullWidth)
+                <div class="w-full">
+                    {{ $slot }}
+                </div>
+            @else
+                <div class="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+                    {{ $slot }}
+                </div>
+            @endif
+            {{-- <div class="mx-auto max-w-8xl py-6 sm:px-6 lg:px-8">
                 {{ $slot }}
-            </div>
+            </div> --}}
         </main>
     </div>
 

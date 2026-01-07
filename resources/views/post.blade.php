@@ -1,9 +1,9 @@
-<x-layout>
+<x-layout fullWidth="true">
     <x-slot:title>
         {{ $title }}
     </x-slot:title>
     <main class="mx-auto mt-10 mb-5 pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
-        <div class="flex justify-between px-4 mx-auto max-w-7xl ">
+        <div class="flex justify-between mx-auto max-w-7xl ">
             <article
                 class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                 <header class="mb-4 lg:mb-6 not-format">
@@ -21,13 +21,29 @@
                             </div>
                         </div>
                     </address>
+                    @if ($post->image)
+                        <img class="w-full h-100 object-cover rounded-2xl" src="{{ asset('storage/' . $post->image) }}"
+                            alt="{{ $post->title }}">
+                    @else
+                        <div
+                            class="w-full h-96 rounded-lg bg-gray-200 flex items-center justify-center dark:bg-gray-700">
+
+                            <svg class="w-12 h-12 text-gray-400 dark:text-gray-500" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <path
+                                    d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+                            </svg>
+
+                        </div>
+                    @endif
                     <h1
-                        class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
+                        class="mt-5 mb-1 text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl dark:text-white">
                         {{ $post->title }}</h1>
                     <p>From {{ $post->category->name }} Category</p>
+
                 </header>
                 <div class="">
-                    <hr class="h-px my-2 bg-linear-to-r from-transparent via-white to-transparent border-0 opacity-100">
+                    <hr class="h-1 bg-linear-to-r from-transparent via-white to-transparent border opacity-100">
                     <p class="text-justify whitespace-pre-line ">{{ $post->body }}</p>
                 </div>
             </article>

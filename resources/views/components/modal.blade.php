@@ -23,9 +23,57 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="{{ route('posts.store') }}" method="POST">
+            <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="grid gap-4 mb-4 sm:grid-cols-3">
+                <div class="grid gap-4 mb-1 sm:grid-cols-3">
+                    <div class="col-span-full my-6 p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+                        x-data="{ imagePreview: '{{ isset($post) && $post->image ? asset('storage/' . $post->image) : '' }}' }">
+
+                        <label class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">
+                            Featured Image
+                        </label>
+
+                        <div class="flex flex-col items-center gap-6 sm:flex-row">
+
+                            <div class="shrink-0">
+                                <template x-if="imagePreview">
+                                    <img :src="imagePreview"
+                                        class="object-cover w-32 h-32 rounded-lg border-2 border-gray-300 dark:border-gray-600"
+                                        alt="Image preview" />
+                                </template>
+
+                                <template x-if="!imagePreview">
+                                    <div
+                                        class="flex items-center justify-center w-32 h-32 rounded-lg bg-gray-100 border-2 border-dashed border-gray-300 dark:bg-gray-700 dark:border-gray-600">
+                                        <svg class="w-8 h-8 text-gray-400" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                        </svg>
+                                    </div>
+                                </template>
+                            </div>
+
+                            <div class="w-full">
+                                <input type="file" name="image" id="image" accept="image/*"
+                                    @change="imagePreview = URL.createObjectURL($event.target.files[0])"
+                                    class="block w-full text-sm text-gray-500
+                          file:mr-4 file:py-2.5 file:px-6
+                          file:rounded-full file:border-0
+                          file:text-sm file:font-semibold
+                          file:bg-blue-600 file:text-white
+                          hover:file:bg-blue-700
+                          cursor-pointer bg-gray-50 rounded-lg border border-gray-300
+                          dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600">
+
+                                <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                                    SVG, PNG, JPG or GIF (Max. 2MB).
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
                     <div class="col-span-2">
                         <label for="title"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>

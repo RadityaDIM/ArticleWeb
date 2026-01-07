@@ -6,6 +6,8 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
+use Faker\Provider\HtmlLorem;
+use Faker\Provider\Lorem;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
