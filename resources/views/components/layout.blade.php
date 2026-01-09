@@ -1,4 +1,4 @@
-@props(['fullWidth' => false])
+@props(['fullWidth' => false, 'hideHeader' => false])
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-gray-100">
 
@@ -18,7 +18,9 @@
 
     <div class="min-h-full flex flex-col">
         <x-navbar></x-navbar>
-        <x-header>{{ $title }}</x-header>
+        @unless ($hideHeader)
+            <x-header>{{ $title }}</x-header>
+        @endunless
 
         <main class="flex-1">
 

@@ -2,7 +2,6 @@
     <x-slot:title>
         {{ $title }}</x-slot:title>
     <div class="flex justify-between my-5 mx-auto max-w-5xl">
-        {{-- div filter --}}
         <div class="">
             @isset($categories)
                 <div>
@@ -51,10 +50,17 @@
         <div class="w-2xl my-0">
             <x-search></x-search>
         </div>
-        <div class="">
-            <button id="defaultModalButton" data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+        <div x-data x-init="@if (request('open_modal')) setTimeout(() => {
+                $refs.btnOpenModal.click();
+
+                const url = new URL(window.location);
+                url.searchParams.delete('open_modal');
+                window.history.replaceState({}, '', url);
+            }, 300); @endif">
+
+            <button id ="defaultModalButton" data-modal-target="defaultModal" data-modal-toggle="defaultModal"
                 class="text-white bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 "
-                type="button"> Add post
+                type="button" x-ref="btnOpenModal" data-modal-toggle="defaultModal"> Add post
             </button>
         </div>
         <div>

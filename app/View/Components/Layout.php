@@ -11,9 +11,13 @@ class Layout extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $fullWidth;
+    public $hideHeader;
+
+    public function __construct($fullWidth = false, $hideHeader = false)
     {
-        //
+        $this->fullWidth = $fullWidth;
+        $this->hideHeader = $hideHeader;
     }
 
     /**
