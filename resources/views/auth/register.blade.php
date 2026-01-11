@@ -13,11 +13,11 @@
 </head>
 
 <body class="h-full">
-    <div class="min-h-full">
-        <main>
+    <div class="min-h-full flex flex-col justify-center">
+        <main class="flex-1 w-full">
             <div>
-                <section class="bg-gray-50 dark:bg-gray-900">
-                    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+                <section class="bg-gray-50 dark:bg-gray-900 min-h-full">
+                    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-15">
                         <a href="#"
                             class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                             <img class="w-12 h-12 mr-2 rounded-full" src="{{ asset('logo.jpg') }}" alt="logo">

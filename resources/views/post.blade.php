@@ -5,11 +5,12 @@
     <main class="mx-auto mt-10 mb-5 pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
         <div class="flex justify-between mx-auto max-w-7xl ">
             <article
-                class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-                <header class="mb-4 lg:mb-6 not-format">
+                class="mx-auto w-full max-w-5xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                <header class="mb-4 mx-auto lg:mb-6 not-format sm:px-10">
                     <address class="flex items-center mb-6 not-italic">
-                        <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                            <img class="mr-4 w-16 h-16 rounded-full" src="{{ asset('icon.jpg') }}" alt="">
+                        <div class="inline-flex items-center px-2 mr-3 text-sm   text-gray-900 dark:text-white">
+                            <img class="mr-4 w-16 h-16 rounded-full sm:w-10 sm:h-10" src="{{ asset('icon.jpg') }}"
+                                alt="">
 
                             <div>
                                 <a href="../author/{{ $post->author->username }}" rel="author"
@@ -22,8 +23,8 @@
                         </div>
                     </address>
                     @if ($post->image)
-                        <img class="w-full h-100 object-cover rounded-2xl" src="{{ asset('storage/' . $post->image) }}"
-                            alt="{{ $post->title }}">
+                        <img class="w-full h-100 object-cover rounded-2xl sm:px-5"
+                            src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
                     @else
                         <div
                             class="w-full h-96 rounded-lg bg-gray-200 flex items-center justify-center dark:bg-gray-700">
@@ -42,7 +43,7 @@
                     <p>From {{ $post->category->name }} Category</p>
 
                 </header>
-                <div class="">
+                <div class="sm:px-10">
                     <hr class="h-1 bg-linear-to-r from-transparent via-white to-transparent border opacity-100">
                     <p class="text-justify whitespace-pre-line ">{{ $post->body }}</p>
                 </div>

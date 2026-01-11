@@ -7,8 +7,10 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use id;
+use Illuminate\Container\Attributes\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class PostController extends Controller
 {
@@ -82,7 +84,12 @@ class PostController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
+            if ($post->image) {
+                FacadesStorage::delete($post->image);
+            }
             $validate['image'] = $request->file('image')->store('post-images', 'public');
+        } else {
+            unset($validate['image']);
         }
 
         $validate['author_id'] = Auth::id();
@@ -99,14 +106,15 @@ class PostController extends Controller
 
         $validate['slug'] = $slug;
 
-        $post->update([
-            'title' => $validate['title'],
-            'category_id' => $validate['category_id'],
-            'body' => $validate['body'],
-            'author_id' => $validate['author_id'],
-            'slug' => $validate['slug'],
-            'image' => $validate['image'] ?? null
-        ]);
+        // $post->update([
+        //     'title' => $validate['title'],
+        //     'category_id' => $validate['category_id'],
+        //     'body' => $validate['body'],
+        //     'author_id' => $validate['author_id'],
+        //     'slug' => $validate['slug'],
+        //     'image' => $validate['image'] ?? null
+        // ]);
+        $post->update($validate);
 
         return redirect('/posts/' . $post->slug)->with('success', 'Post has been updated!');
     }
