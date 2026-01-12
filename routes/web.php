@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\PostController;
-use App\Models\Category;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
-use Faker\Provider\HtmlLorem;
+use App\Models\Category;
 use Faker\Provider\Lorem;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Faker\Provider\HtmlLorem;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
 
 
 
@@ -19,7 +20,10 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/about', function () {
-    return view('about', ['nama' => "Raditya Dimas"], ['title' => "About Us"]);
+    return view('about', ['title' => "About Us"]);
+})->middleware('auth');
+Route::get('/profile', function (User $user) {
+    return view('profile', ['title' => "Your Profile", 'user' => $user]);
 })->middleware('auth');
 
 Route::get('/posts', function (Request $request) {
@@ -58,6 +62,7 @@ Route::get('/category/{category:slug}', function (Category $category, Request $r
     return view('posts', ['title' => count($category->posts) . ' Articles on Category ' . $category->name, 'posts' => $category->posts]);
 })->middleware('auth');
 
+Route::put('/profile', [UserController::class, 'update'])->name('users.update');
 
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
@@ -66,3 +71,7 @@ Route::delete('/post/{post:slug}', [PostController::class, 'destroy'])->name('po
 Route::put('/post/{post:slug}', [PostController::class, 'update'])->name('posts.update');
 
 Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.sendEmail');
+
+Route::get('/change-password', function () {
+    return view('change-password', ['title' => 'Change Password']);
+});

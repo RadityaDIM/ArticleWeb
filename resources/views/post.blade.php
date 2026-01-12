@@ -49,25 +49,35 @@
                 </div>
             </article>
         </div>
+        <div class="flex justify-center items-center mt-10">
+
+            @if ($post->author_id == auth()->id())
+                <div>
+                    <div class="flex justify-between items-center gap-5">
+                        <button type="button"
+                            class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                            aria-haspopup="dialog" aria-expanded="false" aria-controls="editModal"
+                            data-hs-overlay="#editModal">
+                            Update post
+                        </button>
+                        <button type="button"
+                            class="py-3 px-4 inline-flex items-center gap-x-2 hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                            aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-vertically-centered-modal"
+                            data-hs-overlay="#hs-vertically-centered-modal">
+                            <svg class="w-5 h-5 mr-1 -ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            Delete post
+                        </button>
+                    </div>
+                </div>
+            @endif
+        </div>
     </main>
 
-    @if ($post->author_id == auth()->id())
-        <div class="flex justify-end items-center">
-            <div class="relative">
-                <button type="button"
-                    class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                    aria-haspopup="dialog" aria-expanded="false" aria-controls="editModal" data-hs-overlay="#editModal">
-                    Update post
-                </button>
-                <button type="button"
-                    class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-red-600 text-white hover:bg-red-700 focus:outline-hidden focus:bg-red-700 disabled:opacity-50 disabled:pointer-events-none"
-                    aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-vertically-centered-modal"
-                    data-hs-overlay="#hs-vertically-centered-modal">
-                    Delete post
-                </button>
-            </div>
-        </div>
-    @endif
 
     <div id="hs-vertically-centered-modal"
         class="hs-overlay hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none"
