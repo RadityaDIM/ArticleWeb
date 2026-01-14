@@ -2,18 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use id;
-use Illuminate\Container\Attributes\Storage;
+
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Container\Attributes\Storage;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Storage as FacadesStorage;
 
 class PostController extends Controller
 {
+
+    public function index()
+    {
+        return view('posts', [
+            'title' => "Posts Page",
+            'posts' => Post::with(['author', 'category'])
+                ->search(request(['search', 'category', 'author']))->latest()->paginate(10)->withQueryString(),
+            'categories' => Category::all()
+        ]);
+    }
+
+    public function show(Post $post)
+    {
+        $post->load('author', 'category');
+
+        return view('post', ['title' => 'Single Post', 'post' => $post, 'categories' => Category::all()]);
+    }
+
+
+
     public function store(Request $request)
     {
 
