@@ -50,7 +50,8 @@
         <div class="w-2xl my-0">
             <x-search></x-search>
         </div>
-        <div x-data x-init="@if (request('open_modal')) setTimeout(() => {
+        @auth
+            <div x-data x-init="@if (request('open_modal')) setTimeout(() => {
                 $refs.btnOpenModal.click();
 
                 const url = new URL(window.location);
@@ -58,14 +59,26 @@
                 window.history.replaceState({}, '', url);
             }, 300); @endif">
 
-            <button id ="defaultModalButton" data-modal-target="defaultModal" data-modal-toggle="defaultModal"
-                class="text-white bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 "
-                type="button" x-ref="btnOpenModal" data-modal-toggle="defaultModal"> Add post
-            </button>
-        </div>
-        <div>
-            <x-modal :categories="$categories" />
-        </div>
+                <button id ="defaultModalButton" data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+                    class="text-white bg-primary-700 hover:bg-primary-800 
+                font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-60
+                0 dark:hover:bg-primary-900 "
+                    type="button" x-ref="btnOpenModal" data-modal-toggle="defaultModal"> Add post
+                </button>
+            </div>
+            <div>
+                <x-modal :categories="$categories" />
+            </div>
+        @else
+            <div>
+                <button
+                    class="text-white bg-primary-700 hover:bg-primary-800 
+                font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-60
+                0 dark:hover:bg-primary-700 "
+                    type="button"> <a href="{{ route('login') }}">Add post</a>
+                </button>
+            </div>
+        @endauth
     </div>
     {{-- </x-slot:title> --}}
 

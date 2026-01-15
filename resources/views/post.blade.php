@@ -9,9 +9,13 @@
                 <header class="mb-4 mx-auto lg:mb-6 not-format sm:px-10">
                     <address class="flex items-center mb-6 not-italic">
                         <div class="inline-flex items-center px-2 mr-3 text-sm   text-gray-900 dark:text-white">
-                            <img class="mr-4 w-16 h-16 rounded-full sm:w-10 sm:h-10" src="{{ asset('icon.jpg') }}"
-                                alt="">
-
+                            @if ($post->author->image)
+                                <img class="mr-4 w-16 h-16 rounded-full sm:w-10 sm:h-10"
+                                    src="{{ asset('storage/' . $post->author->image) }}" alt="Profile Picture">
+                            @else
+                                <img class="mr-4 w-16 h-16 rounded-full sm:w-10 sm:h-10" src="{{ asset('icon.jpg') }}"
+                                    alt="" />
+                            @endif
                             <div>
                                 <a href="../author/{{ $post->author->username }}" rel="author"
                                     class="text-xl font-bold text-gray-900 dark:text-white">{{ $post->author->name }}</a>

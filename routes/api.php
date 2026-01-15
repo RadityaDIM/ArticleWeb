@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/posts', [ApiPostController::class, 'index'])->middleware('auth:sanctum');
-Route::get('/posts/{post:slug}', [ApiPostController::class, 'show'])->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthenticationController::class, 'logout']);
+    Route::get('/user-data-token', [AuthenticationController::class, 'userDataToken']);
+});
+
+Route::get('/posts', [ApiPostController::class, 'index']);
+Route::get('/posts/{post:slug}', [ApiPostController::class, 'show']);
 
 Route::post('/login', [AuthenticationController::class, 'login']);
-Route::post('/logout', [AuthenticationController::class, 'logout'])->middleware('auth:sanctum');
-
-Route::get('/user-data-token', [AuthenticationController::class, 'userDataToken'])->middleware('auth:sanctum');
